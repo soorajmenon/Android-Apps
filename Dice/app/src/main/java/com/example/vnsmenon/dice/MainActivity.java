@@ -2,6 +2,7 @@ package com.example.vnsmenon.dice;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -55,7 +56,60 @@ public class MainActivity extends AppCompatActivity {
 
         UserScorer.setText("0");
         CompScorer.setText("0");
+        Roll.setEnabled(true);
+        Hold.setEnabled(true);
 
+
+        Roll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final ImageView diceImage = (ImageView) findViewById(R.id.Dice);
+                i = rand.nextInt(diceArray.length);
+                user_score = Integer.parseInt(UserScorer.getText().toString());
+                diceImage.setImageResource(diceArray[i]);
+                Log.i("Number" , Integer.toString(i));
+                switch (i) {
+                    case 0:
+                        user_score += user_score_buff;
+                        UserScorer.setText(Integer.toString(user_score));
+                        user_score_buff = 0;
+                        computerScore();
+
+                        break;
+                    case 1:
+                        user_score_buff += 2;
+                        user_score = user_score_buff;
+                        break;
+                    case 2:
+                        user_score_buff += 3;
+                        user_score = user_score_buff;
+                        break;
+                    case 3:
+                        user_score_buff += 4;
+                        user_score = user_score_buff;
+                        break;
+                    case 4:
+                        user_score_buff += 5;
+                        user_score = user_score_buff;
+                        break;
+                    case 5:
+                        user_score_buff += 6;
+                        user_score = user_score_buff;
+                        break;
+                }
+
+            }
+
+        });
+
+
+        Hold.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserScorer.setText(Integer.toString(user_score));
+                user_score_buff = 0;
+            }
+        });
 
     }
 
@@ -63,7 +117,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-     public void user(){
+
+
+    /* public void user(){
 
          Roll.setEnabled(true);
          Hold.setEnabled(true);
@@ -73,11 +129,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     final ImageView diceImage = (ImageView) findViewById(R.id.Dice);
-
                     i = rand.nextInt(diceArray.length);
                     user_score = Integer.parseInt(UserScorer.getText().toString());
                     diceImage.setImageResource(diceArray[i]);
-
+                    Log.i("Number" , Integer.toString(i));
                     switch (i) {
                         case 0:
                             user_score += user_score_buff;
@@ -110,20 +165,14 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-            });
-
-
-            Hold.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    UserScorer.setText(Integer.toString(user_score));
-                    user_score_buff = 0;
-                }
-            });
+            });*/
 
 
 
-        }
+
+
+
+
 
     public void computerScore(){
 
@@ -136,7 +185,11 @@ public class MainActivity extends AppCompatActivity {
             switch (i) {
                 case 0: CompScorer.setText(Integer.toString(comp_score));
                         comp_buff_score = 0;
-                        user();
+                    Roll.setEnabled(true);
+                    Hold.setEnabled(true);
+                    break;
+
+
 
 
                 case 1:
@@ -162,6 +215,8 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             CompScorer.setText(Integer.toString(comp_score));
+            Roll.setEnabled(true);
+            Hold.setEnabled(true);
 
 
         }
