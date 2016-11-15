@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         private int user_score_buff;
         private int comp_score;
         private int comp_buff_score;
+    boolean cpuTurn;
 
         public Button Roll, Hold, Reset;
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        cpuTurn = false;
         Roll = (Button) findViewById(R.id.Roll);
         Hold = (Button) findViewById(R.id.Hold);
         Reset = (Button) findViewById(R.id.Reset);
@@ -73,28 +74,33 @@ public class MainActivity extends AppCompatActivity {
                         user_score += user_score_buff;
                         UserScorer.setText(Integer.toString(user_score));
                         user_score_buff = 0;
+                        cpuTurn = true;
                         computerScore();
-
                         break;
                     case 1:
                         user_score_buff += 2;
                         user_score = user_score_buff;
+                        UserScorer.setText(Integer.toString(user_score));
                         break;
                     case 2:
                         user_score_buff += 3;
                         user_score = user_score_buff;
+                        UserScorer.setText(Integer.toString(user_score));
                         break;
                     case 3:
                         user_score_buff += 4;
                         user_score = user_score_buff;
+                        UserScorer.setText(Integer.toString(user_score));
                         break;
                     case 4:
                         user_score_buff += 5;
                         user_score = user_score_buff;
+                        UserScorer.setText(Integer.toString(user_score));
                         break;
                     case 5:
                         user_score_buff += 6;
                         user_score = user_score_buff;
+                        UserScorer.setText(Integer.toString(user_score));
                         break;
                 }
 
@@ -176,42 +182,48 @@ public class MainActivity extends AppCompatActivity {
 
     public void computerScore(){
 
-        i= rand.nextInt(diceArray.length);
+
 
         Roll.setEnabled(false);
         Hold.setEnabled(false);
-
-        while(i>=0){
+        loop:
+        while(cpuTurn){
+            i= rand.nextInt(diceArray.length);
+            Log.i("Entered Loop" , "Entered Loop");
+            if (i == 0) {
+                CompScorer.setText(Integer.toString(comp_score));
+                comp_buff_score = 0;
+                Roll.setEnabled(true);
+                Hold.setEnabled(true);
+                cpuTurn = false;
+                break loop;
+            }
             switch (i) {
-                case 0: CompScorer.setText(Integer.toString(comp_score));
-                        comp_buff_score = 0;
-                    Roll.setEnabled(true);
-                    Hold.setEnabled(true);
-                    break;
-
-
-
-
                 case 1:
                     comp_buff_score += 2;
                     comp_score = comp_buff_score;
+                    CompScorer.setText(Integer.toString(comp_score));
                     break;
                 case 2:
 
                     comp_buff_score += 3;
                     comp_score = comp_buff_score;
+                    CompScorer.setText(Integer.toString(comp_score));
                     break;
                 case 3:
                     comp_buff_score += 4;
                     comp_score = comp_buff_score;
+                    CompScorer.setText(Integer.toString(comp_score));
                     break;
                 case 4:
                     comp_buff_score += 5;
                     comp_score = comp_buff_score;
+                    CompScorer.setText(Integer.toString(comp_score));
                     break;
                 case 5:
                     comp_buff_score += 6;
                     comp_score = comp_buff_score;
+                    CompScorer.setText(Integer.toString(comp_score));
                     break;
             }
             CompScorer.setText(Integer.toString(comp_score));
