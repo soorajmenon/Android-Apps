@@ -11,10 +11,10 @@ import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity {
-        private int user_score;
-        private int user_score_buff;
-        private int comp_score;
-        private int comp_buff_score;
+        private static int user_score;
+        private static int user_score_buff;
+        private static int comp_score;
+        private static int comp_buff_score;
     boolean cpuTurn;
 
         public Button Roll, Hold, Reset;
@@ -73,34 +73,30 @@ public class MainActivity extends AppCompatActivity {
                     case 0:
                         user_score += user_score_buff;
                         UserScorer.setText(Integer.toString(user_score));
-                        user_score_buff = 0;
+                        //user_score_buff = 0;
                         cpuTurn = true;
                         computerScore();
                         break;
                     case 1:
-                        user_score_buff += 2;
+                        user_score_buff = user_score_buff + 2;
                         user_score = user_score_buff;
-                        UserScorer.setText(Integer.toString(user_score));
+
                         break;
                     case 2:
-                        user_score_buff += 3;
+                        user_score_buff =user_score_buff + 3;
                         user_score = user_score_buff;
-                        UserScorer.setText(Integer.toString(user_score));
                         break;
                     case 3:
-                        user_score_buff += 4;
+                        user_score_buff = user_score_buff + 4;
                         user_score = user_score_buff;
-                        UserScorer.setText(Integer.toString(user_score));
                         break;
                     case 4:
-                        user_score_buff += 5;
+                        user_score_buff = user_score_buff + 5;
                         user_score = user_score_buff;
-                        UserScorer.setText(Integer.toString(user_score));
                         break;
                     case 5:
-                        user_score_buff += 6;
+                        user_score_buff = user_score_buff + 6;
                         user_score = user_score_buff;
-                        UserScorer.setText(Integer.toString(user_score));
                         break;
                 }
 
