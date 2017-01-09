@@ -10,42 +10,27 @@
     tools:context="com.example.vnsmenon.dice.MainActivity">
 
 
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/Frame_main"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/Frame_main">
+        android:layout_alignParentStart="true">
 
         <Button
             android:layout_width="95dp"
-            android:layout_height="60dp"
-            android:text="ROLL"
-            android:id="@+id/Roll"
-            android:layout_gravity="left|center_vertical" />
-
-        <Button
-            android:layout_width="95dp"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:text="HOLD"
             android:id="@+id/Hold"
             android:layout_gravity="center" />
 
         <Button
             android:layout_width="96dp"
-            android:layout_height="63dp"
+            android:layout_height="37dp"
             android:text="RESET"
             android:id="@+id/Reset"
             android:layout_gravity="right|center_vertical" />
-
-        <ImageView
-            android:layout_width="167dp"
-            android:layout_height="167dp"
-            android:id="@+id/Dice"
-            android:layout_gravity="left|top"
-            android:src="@drawable/dice1" />
 
         <TextView
             android:layout_width="128dp"
@@ -58,6 +43,20 @@
             android:layout_height="54dp"
             android:id="@+id/CompScore"
             android:layout_gravity="right|bottom" />
+
+        <ImageView
+            android:layout_width="157dp"
+            android:layout_height="167dp"
+            android:id="@+id/Dice"
+            android:layout_gravity="left|top"
+            android:src="@drawable/dice1" />
+
+        <Button
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:text="ROLL"
+            android:id="@+id/Roll"
+            android:layout_gravity="left|center_vertical" />
 
     </FrameLayout>
 </RelativeLayout>
